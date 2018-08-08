@@ -30,45 +30,6 @@ import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 @PrepareForTest({StaticService.class})
 public class ItemServiceTest {
 
-    @Mock
-    private ItemRepository itemRepository;
-
-    @InjectMocks
-    private ItemService itemService;
-
-
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-    }
-
-
-    @Test
-    public void getItemNameUpperCase() {
-
-        //
-        // Given
-        //
-        Item mockedItem = new Item("it1", "Item 1", "This is item 1", 2000, true);
-        when(itemRepository.findById("it1")).thenReturn(mockedItem);
-
-        //
-        // When
-        //
-        String result = itemService.getItemNameUpperCase("it1");
-
-        //
-        // Then
-        //
-        verify(itemRepository, times(1)).findById("it1");
-        assertThat(result, is("ITEM 1"));
-    }
-
-    @Test
-    public void calculationOfAveragePriceForAllItems() {
-
-        //
-        // Given
         //
         List<Item> mockedItemList = new ArrayList<Item>();
         mockedItemList.add(new Item("it1", "Item 1", "This is item 1", 2000, true));
